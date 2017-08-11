@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="consumeNew" Class="CanteenDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.100.155;Initial Catalog=consumeNew;Persist Security Info=True;User ID=LYH" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="consumeNewConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.t_UserConfig" Member="t_UserConfig">
+    <Type Name="t_UserConfig">
+      <Column Name="FID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FPassword" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FQuota" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="FStatus" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.laijq20161105_001" Method="laijq20161105_001">
+    <ElementType Name="laijq20161105_001Result">
+      <Column Name="FWeek" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="FFloor" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SumMonConsume" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.laijq20161105_002" Method="laijq20161105_002">
+    <ElementType Name="laijq20161105_002Result">
+      <Column Name="FType" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ljq20160323_001" Method="ljq20160323_001">
+    <Parameter Name="EmpNo" Parameter="empNo" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="BegDay" Parameter="begDay" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="EndDay" Parameter="endDay" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="ljq20160323_001Result">
+      <Column Name="消费时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="消费场所" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="消费金额" Type="System.Decimal" DbType="SmallMoney NOT NULL" CanBeNull="false" />
+      <Column Name="餐别" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ljq20160323_002" Method="ljq20160323_002">
+    <Parameter Name="EmpNo" Parameter="empNo" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="ljq20160323_002Result">
+      <Column Name="DatLastConsumeTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FStatus" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
+      <Column Name="MonBalance" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ljq20160323_003" Method="ljq20160323_003">
+    <Parameter Name="EmpNo" Parameter="empNo" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="BegDay" Parameter="begDay" Type="System.String" DbType="VarChar(255)" />
+    <Parameter Name="EndDay" Parameter="endDay" Type="System.String" DbType="VarChar(255)" />
+    <ElementType Name="ljq20160323_003Result">
+      <Column Name="充值前金额" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="充值金额" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="充值后金额" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="充值时间" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="充值场所" Type="System.String" DbType="VarChar(11) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ljq20161019" Method="ljq20161019">
+    <Parameter Name="EmpNo" Parameter="empNo" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="Status" Parameter="status" Type="System.String" DbType="NVarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

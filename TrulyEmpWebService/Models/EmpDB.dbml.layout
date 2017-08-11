@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="EmpDB">
+  <DataContextMoniker Name="/EmpDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b6cfa866-86e1-4ce2-b983-f54d66cb211f" isExpanded="false" absoluteBounds="5.125, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dccd167e-a38e-47d3-9587-7d309bb90376" absoluteBounds="5.14, 1.96, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="076996be-6fba-4bcb-9ffb-21ebbb58f191" isExpanded="false" absoluteBounds="8.625, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_authority" />
+      <nestedChildShapes>
+        <elementListCompartment Id="17de7c84-d22e-4096-af48-c5738879fa55" absoluteBounds="8.64, 0.96, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f541c8b-a43e-4b2c-91c6-5464aee09fac" isExpanded="false" absoluteBounds="8.625, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_groupAuthority" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3605e18b-8b74-44d3-93fa-a73285dc3bfb" absoluteBounds="8.64, 1.71, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.625 : 0.95); (9.625 : 1.25)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/EmpDBDataContext/ei_authority/ei_authority_ei_groupAuthority" />
+      <nodes>
+        <classShapeMoniker Id="076996be-6fba-4bcb-9ffb-21ebbb58f191" />
+        <classShapeMoniker Id="7f541c8b-a43e-4b2c-91c6-5464aee09fac" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="59cf2dcf-9640-4103-a285-7cfb0295747f" isExpanded="false" absoluteBounds="8.625, 2, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_groups" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7174c872-253e-4aca-82ac-f5b31af82c82" absoluteBounds="8.64, 2.46, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.625 : 2); (9.625 : 1.7)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/EmpDBDataContext/ei_groups/ei_groups_ei_groupAuthority" />
+      <nodes>
+        <classShapeMoniker Id="59cf2dcf-9640-4103-a285-7cfb0295747f" />
+        <classShapeMoniker Id="7f541c8b-a43e-4b2c-91c6-5464aee09fac" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d66ec081-2c2d-4073-9f08-bf3c7c949173" isExpanded="false" absoluteBounds="8.625, 2.75, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_groupUser" />
+      <nestedChildShapes>
+        <elementListCompartment Id="691adca7-852f-4b1a-8d7b-bf9c3a0d35a3" absoluteBounds="8.64, 3.21, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.625 : 2.45); (9.625 : 2.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/EmpDBDataContext/ei_groups/ei_groups_ei_groupUser" />
+      <nodes>
+        <classShapeMoniker Id="59cf2dcf-9640-4103-a285-7cfb0295747f" />
+        <classShapeMoniker Id="d66ec081-2c2d-4073-9f08-bf3c7c949173" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.125 : 1.95); (7.5 : 2.325); (7.5 : 2.375); (8.25034515384615 : 2.375); (8.62534515384615 : 2.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/EmpDBDataContext/ei_users/ei_users_ei_groupUser" />
+      <nodes>
+        <classShapeMoniker Id="b6cfa866-86e1-4ce2-b983-f54d66cb211f" />
+        <classShapeMoniker Id="d66ec081-2c2d-4073-9f08-bf3c7c949173" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="f2626a35-1744-4d5c-97fb-06f98bba37c1" isExpanded="false" absoluteBounds="0.5, 2.75, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/vw_ei_simple_users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f55b44f9-76ff-4254-b5b2-39a73c3e4a3e" absoluteBounds="0.51500000000000012, 3.21, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6357500-9a85-4f43-ba24-3e6a7c5c3507" isExpanded="false" absoluteBounds="0.5, 2, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/vw_ei_users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="53dad1ec-155c-4c9d-a105-2f0aee30ee05" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 3.112762451171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="413a87e7-b862-41df-bf9b-550e91103f31" isExpanded="false" absoluteBounds="0.5, 1.25, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_event_log_android" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b46e1ae2-9500-456b-9927-d02035c4c473" absoluteBounds="0.51500000000000012, 1.71, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6482fdf8-c281-48e1-8913-5500b487f5ae" isExpanded="false" absoluteBounds="0.5, 3.5, 2, 0.45">
+      <DataClassMoniker Name="/EmpDBDataContext/ei_specialUsers" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85120552-0436-4b84-9eb7-440753455e85" absoluteBounds="0.51499999999999968, 3.96, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

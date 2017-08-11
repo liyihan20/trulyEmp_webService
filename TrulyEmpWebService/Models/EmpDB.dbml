@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ICAudit" Class="EmpDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=192.168.100.205;Initial Catalog=ICAudit;Persist Security Info=True;User ID=ICEmp" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ICAuditConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ei_users" Member="ei_users">
+    <Type Name="ei_users">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="card_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="forbit_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="last_login_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fail_times" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sex" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="salary_no" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="short_phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="short_portrait" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="ei_users_ei_groupUser" Member="ei_groupUser" ThisKey="id" OtherKey="user_id" Type="ei_groupUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ei_authority" Member="ei_authority">
+    <Type Name="ei_authority">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="number" Type="System.Decimal" DbType="Decimal(6,2)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="en_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="controler_name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="action_name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="iconcls" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ei_authority_ei_groupAuthority" Member="ei_groupAuthority" ThisKey="id" OtherKey="authority_id" Type="ei_groupAuthority" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ei_groupAuthority" Member="ei_groupAuthority">
+    <Type Name="ei_groupAuthority">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="group_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="authority_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ei_authority_ei_groupAuthority" Member="ei_authority" ThisKey="authority_id" OtherKey="id" Type="ei_authority" IsForeignKey="true" />
+      <Association Name="ei_groups_ei_groupAuthority" Member="ei_groups" ThisKey="group_id" OtherKey="id" Type="ei_groups" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ei_groups" Member="ei_groups">
+    <Type Name="ei_groups">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="description" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="ei_groups_ei_groupAuthority" Member="ei_groupAuthority" ThisKey="id" OtherKey="group_id" Type="ei_groupAuthority" />
+      <Association Name="ei_groups_ei_groupUser" Member="ei_groupUser" ThisKey="id" OtherKey="group_id" Type="ei_groupUser" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ei_groupUser" Member="ei_groupUser">
+    <Type Name="ei_groupUser">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="group_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ei_groups_ei_groupUser" Member="ei_groups" ThisKey="group_id" OtherKey="id" Type="ei_groups" IsForeignKey="true" />
+      <Association Name="ei_users_ei_groupUser" Member="ei_users" ThisKey="user_id" OtherKey="id" Type="ei_users" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ei_simple_users" Member="vw_ei_simple_users">
+    <Type Name="vw_ei_simple_users">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="card_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="forbit_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="sex" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="salary_no" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="dep_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="short_dep_name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vw_ei_users" Member="vw_ei_users">
+    <Type Name="vw_ei_users">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="card_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="forbit_flag" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="create_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="last_login_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="sex" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="salary_no" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="short_portrait" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="dep_name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="short_dep_name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="short_phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ei_event_log_android" Member="ei_event_log_android">
+    <Type Name="ei_event_log_android">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="model" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="do_what" Type="System.String" DbType="VarChar(max)" CanBeNull="true" />
+      <Column Name="op_date" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ei_specialUsers" Member="ei_specialUsers">
+    <Type Name="ei_specialUsers">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="card_no" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetDormChargeMonth" Method="GetDormChargeMonth">
+    <ElementType Name="GetDormChargeMonthResult">
+      <Column Name="year_month" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetDormFeeByMonth" Method="GetDormFeeByMonth">
+    <Parameter Name="yearMonth" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="salaryNo" Type="System.String" DbType="VarChar(20)" />
+    <ElementType Name="GetDormFeeByMonthResult">
+      <Column Name="dorm_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="rent" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="water" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="electricity" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="management" Type="System.Decimal" DbType="Decimal(8,2)" CanBeNull="true" />
+      <Column Name="repair" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="fine" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="others" Type="System.Decimal" DbType="Decimal(8,2) NOT NULL" CanBeNull="false" />
+      <Column Name="comment" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="total" Type="System.Decimal" DbType="Decimal(10,1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetEmpDormInfo" Method="GetEmpDormInfo">
+    <Parameter Name="card_no" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetEmpDormInfoResult">
+      <Column Name="area" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="dorm_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="in_date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetHREmpInfo" Method="GetHREmpInfo">
+    <Parameter Name="card_no" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetHREmpInfoResult">
+      <Column Name="sex" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="emp_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="id_code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="tp" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="zp" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="txm" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetHREmpStatus" Method="GetHREmpStatus">
+    <Parameter Name="card_no" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="GetHREmpStatusResult">
+      <Column Name="state" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.ValidateDormStatus" Method="ValidateDormStatus">
+    <Parameter Name="account" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="ValidateDormStatusResult">
+      <Column Name="msg" Type="System.String" DbType="VarChar(28) NOT NULL" CanBeNull="false" />
+      <Column Name="suc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SearchHREmp" Method="SearchHREmp">
+    <Parameter Name="searchValue" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="SearchHREmpResult">
+      <Column Name="emp_no" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="emp_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
